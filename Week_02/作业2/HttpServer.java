@@ -33,7 +33,7 @@ public class HttpServer {
 //                    .option(EpollChannelOption.SO_KEEPALIVE,true);
             b.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new HttpInitializer());
-            ChannelFuture future = b.bind(8080).sync();
+            ChannelFuture future = b.bind(8088).sync();
             future.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
