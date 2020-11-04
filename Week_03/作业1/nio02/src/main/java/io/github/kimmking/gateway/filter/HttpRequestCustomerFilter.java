@@ -13,11 +13,11 @@ import io.netty.handler.codec.http.FullHttpRequest;
 public class HttpRequestCustomerFilter implements HttpRequestFilter {
     @Override
     public void filter(FullHttpRequest fullRequest, ChannelHandlerContext ctx) throws Exception {
+        HttpHeaders headers = fullRequest.headers();
+        headers.set("nio","quzhilin");
+
         String uri = fullRequest.uri();
-        if(!uri.contains("/hello")){
-            System.out.println("无权限");
-            throw new  Exception();
-        }
-        System.out.println("经过过滤器");
+        System.out.println("经过过滤器,url="+uri);
+
     }
 }
